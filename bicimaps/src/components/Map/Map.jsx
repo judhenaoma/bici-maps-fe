@@ -2,6 +2,8 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Navbar } from '../Navbar/Navbar';
+import L from 'leaflet';
+import locationLogo from '../../assets/location-dot-solid.svg';
 
 function Map( { loggedIn } ){
 
@@ -9,7 +11,7 @@ function Map( { loggedIn } ){
     const [dataLoaded , setdataLoaded] = useState(false);
     const [user, setUser] = useState({});
   
-    useEffect(()=>{
+    useEffect(()=>{ 
       ( async () => {
         
         try{
@@ -29,8 +31,8 @@ function Map( { loggedIn } ){
 
 
     const customIcon = new L.Icon({
-      iconUrl: './assets/location-dot-solid.svg',
-      iconSize: [30, 30],
+      iconUrl: locationLogo,
+      iconSize: [30, 30]
     });
 
     return (
@@ -45,7 +47,7 @@ function Map( { loggedIn } ){
             dataLoaded ? (
             stations.map( (station) => {
               return (
-                <Marker key={station.id} position={[station.lat, station.lon]}>
+                <Marker key={station.id} position={[station.lat, station.lon]} icon={customIcon}>
                   <Popup>
                     {station.name} - {station.bikes}
                     

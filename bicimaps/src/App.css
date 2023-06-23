@@ -1,6 +1,428 @@
 .App{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
+
+
+/* Component's styles */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+ /* Dropdown component*/
+
+ .dropdown{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+
+.dropdown ul{
+    z-index: 1000;
+    position: absolute;
+    font-size: 14px;
+    border-radius: 10px;
+    text-align: center;
+    border: solid 1px #002147;
+    background-color: #fff;
+    overflow: hidden;
+    transition: opacity 1s ease-in-out;
+ }
+
+ .dropdown ul li {
+   cursor: pointer;
+   white-space:nowrap;
+ }
+
+ .dropdown li a:hover{
+   background-color: #B8E0C9;
+ }
+
+ .dropdown li a {
+   display: block;
+   padding: 10px 15px;
+   width: 100%;
+ }
+
+.dd_item_selected {
+   background-color: #B8E0C9;
+ }
+
+
+/* Switch button styles for map wigdets */
+
+ .switch {
+   position: relative;
+   display: inline-block;
+   width: 50px;
+   height: 24px;
+ }
+
+ .switch input {
+   opacity: 0;
+   width: 0;
+   height: 0;
+ }
+
+
+ /* The slider */
+ .slider {
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #ccc;
+   -webkit-transition: .4s;
+   transition: .4s;
+ }
+ 
+ .slider:before {
+   position: absolute;
+   content: "";
+   height: 15px;
+   width: 15px;
+   left: 4px;
+   bottom: 4px;
+   background-color: white;
+   -webkit-transition: .4s;
+   transition: .4s;
+ }
+ 
+ input:checked + .slider {
+   background-color: #5F9EA0;
+ }
+ 
+ input:focus + .slider {
+   box-shadow: 0 0 1px #5F9EA0;
+ }
+ 
+ input:checked + .slider:before {
+   -webkit-transform: translateX(26px);
+   -ms-transform: translateX(26px);
+   transform: translateX(26px);
+ }
+ 
+ /* Rounded sliders */
+ .slider.round {
+   border-radius: 34px;
+ }
+ 
+ .slider.round:before {
+   border-radius: 50%;
+ }
+ 
+.switch_control{
+   width: 100%;
+   height: auto;
+   display: flex;
+   flex-direction : row;
+   justify-content: space-between;
+   align-items: center;
+   gap: 5px;
+ }
+
+ /* Boxes of the map */
+.widgets_box{
+   position:  absolute;
+   top: 180px;
+   left: 10px;
+   z-index: 990;
+   display: flex;
+   flex-direction : column;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   background-color: rgba( 255, 255, 255, .8);
+   border-radius: 7px;
+   padding: 10px;
+}
+
+.tiles_box{
+   position: absolute;
+   top: 20px;
+   left: 50px;
+   z-index: 990;
+}
+
+.tiles_btn{
+   text-decoration: none;
+   padding: 5px;
+   background-color: #fff;
+   border: 1px solid #323131;
+   border-radius: 5px;
+}
+
+/* review mode cursor handler */
+div.leaflet-container .review_mode{
+   cursor: crosshair !important;
+}
+
+.review_btns{
+   margin-top: 3px;
+   display: flex;
+   gap: 10px;
+}
+
+.review_btns button {
+   border-radius: 10px;
+   padding: 3px;
+   font-style: italic;
+}
+
+.review_btns button.save_review_btn{
+   font-weight: bold;
+   border: 1px solid rgb(68, 68, 68);
+   background-color: #B8E0C9;
+   padding: 3px;
+}
+
+.review_btns button.cancel_review_btn{
+   border: 1px solid rgb(68, 68, 68);
+   background-color: rgb(161, 160, 160);
+   padding: 3px;
+}
+
+.review_form{
+   /* position: relative; */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 300px;
+   background-color: cadetblue;
+   border-radius: 10px;
+   border: 1px solid black;
+   padding: 5px;
+}
+
+.review_form textarea {
+   padding: 3px;
+   border-radius: 10px;
+   width: 100%;
+   min-height: 85px;
+   cursor: no-drop;
+}
+
+.review_form_container{
+   position: relative;
+   width: 300px;
+   z-index: 999;
+   border-radius: 10px;
+   
+}
+
+button.close_box { 
+   position: absolute;
+   right: -12px;
+   top: -12px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #B8E0C9;
+   border: 1px solid black;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   padding: 10px;
+   z-index: 9999;
+   color: black;
+   font-weight: bold;
+   cursor: pointer;
+   z-index: 9999;
+}
+
+/* Popup of encicla stations */
+
+.custom-popup {
+   color: #000;
+   font-size: 14px;
+   font-weight: 600;
+   width: auto;
+   height: auto;
+   border-radius: 5px;
+   padding: 10px;
+   text-align: center;
+ }
+ 
+ .custom-popup .popup-header {
+   background-color: #587b7f;
+   color: #fff;
+   font-size: 16px;
+   font-weight: 700;
+   padding: 5px;
+   margin-bottom: 5px;
+   border-radius: 5px;
+   text-align: center;
+ }
+ 
+ .custom-popup .capacity,
+ 
+ .custom-popup .bikes {
+   display: inline-block;
+   border-radius: 5px;
+   padding: 5px;
+   background-color: #08ABBC;
+   color: #fff;
+   width: 50%;
+   text-align: center;
+ }
+ 
+ .custom-popup .bikes {
+   display: inline-block;
+   color: #fff;
+   padding: 5px;
+   border-radius: 5px;
+   width: 50%;
+   text-align: center;
+ }
+
+ .custom-popup .type {
+   display: block;
+   margin: 5px auto;
+   padding: 2px;
+   background-color: #0072C6;
+   color: #fff;
+   border-radius: 5px;
+   width: auto;
+   text-align: center;
+ }
+ 
+ .custom-popup .closed {
+   display: block;
+   background-color: #f44336;
+   color: #fff;
+   border-radius: 5px;
+   width: auto;
+   text-align: center;
+ }
+ 
+ .custom-popup .open {
+   display: block;
+   color: #fff;
+   background-color: #4caf50;
+   border-radius: 5px;
+   padding: 5px;
+   width: auto;
+   text-align: center;
+ }
+
+ /* Notice boxes */
+.notice_container { 
+   width: 40%;
+   padding: 10px;
+   position : absolute;
+   top: 60px;
+   transform: translate(-50%, 0);
+   left: 50%;
+   z-index: 9999;
+   border-radius: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 5px 5px 3px gray;
+}
+
+.notice_container p {
+   font-size: 18px;
+   font-style: oblique;
+   opacity: 1;
+
+}
+
+.info_notice{
+
+   background-color: #8aeff5;
+   opacity: .7;
+   
+}
+
+.warning_notice{
+   background-color: #FDE0B1;
+   opacity: .7;
+
+}
+
+.success_notice{
+   background-color:   #B8E0C9;
+   opacity: .7;
+
+}
+
+.error_notice{
+   background-color:  #F9A7B0;
+   opacity: .7;
+}
+
+/* Labels of stations when the zoom is near  */
+.stations_labels {
+   white-space: nowrap;
+   padding: 3px;
+   font-size: 11px;
+   width: auto !important;
+   height: auto !important;
+   font-weight: bold;
+   border-radius: 5px;
+
+}
+
+/* Colors for estations labels depending of number of bikes */
+.lowBikes{
+   background-color:  #F9A7B0 !important;
+   border: 1px solid #f44336;
+}
+
+.mediumBikes{
+   background-color: #FDE0B1 !important;
+   border: 1px solid #fd9c01;
+}
+
+.enoughBikes{
+   background-color:   #B8E0C9 !important;
+   border : 1px solid  #4caf50;
+}
+
+.modal{
+   background-color: #fff;
+   position: absolute;
+   top: 100px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 60%;
+   z-index: 9999;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   border: 1px solid black;
+   padding: 20px;
+   box-shadow: 3px 4px 5px grey;
+}
+
+.modal_opened{
+   filter: blur(4px);
+}
+
+.station_picture {
+   max-width: 50%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align : center
+}
+
+
+.weather_map_container {
+   position: absolute;
+   top: 10px;
+   left: 80px;
+ }

@@ -1,28 +1,60 @@
-
-import './App.css';
-import { Map } from './components/Map/Map';
-import { Login } from './components/Login/Login';
-import { Routes, Route } from 'react-router-dom';
-import { SignUp } from './components/SignUp/SignUp';
-import { useState } from 'react';
-import { Home } from './components/Home/Home';
-import { Redirect } from './components/utils/Redirect';
+import { useRef } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Redirect } from "./components/utils/Redirect";
+import { GenericPage } from "./components/GenericPage/GenericPage";
+import { PrivateRoutes, PublicRoutes } from "./routes";
+import { Home } from "./components/Home/Home";
+import { Profile } from "./components/Profile/Profile";
+import { SignUp } from "./components/SignUp/SignUp";
+import { Login } from "./components/Login/Login";
+import { Map } from "./components/Map/Map";
+import "./App.css";
 
 function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false)
+  const appContainerRef = useRef(null);
 
   return (
-    <div className='App'>
-      <Routes>
-        <Route path='/' element={<Redirect to='/home'/>}/>
-        <Route path='/home' element={<Home loggedIn={ loggedIn } />}/>
-        <Route path='/map' element={<Map loggedIn={ loggedIn } />}/>
-        <Route path='/login' element={<Login setLoggedIn = { setLoggedIn } />}/>
-        <Route path='/signup' element={ <SignUp/>}/>
-      </Routes>
+    <div className="App" ref={appContainerRef}>
+      <GenericPage>
+        <Routes>
+          <Route path="/" element={<Redirect to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoutes>
+                <Profile />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoutes>
+                <SignUp />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/map"
+            element={
+              <PrivateRoutes>
+                <Map appRef={appContainerRef} />
+              </PrivateRoutes>
+            }
+          />
+        </Routes>
+      </GenericPage>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
